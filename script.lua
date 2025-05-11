@@ -1,4 +1,4 @@
-loadfile("newvape/games/funkyfridayrevive/linorialib.lua")()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Guilded1/keysys/refs/heads/main/linorialib.lua"))()
 local Library = getgenv().Library
 local HttpService = game:GetService("HttpService")
 
@@ -52,7 +52,7 @@ MainLeft:AddButton("Play best move", function()
             print("best move played from", from, "to", to)
             game:GetService("ReplicatedStorage"):WaitForChild("Chess"):WaitForChild("SubmitMove"):InvokeServer(from..to)
         elseif from ~= nil and to == nil then
-            print("best move played from", from, "to", to)
+            print("best move played ", from)
             game:GetService("ReplicatedStorage"):WaitForChild("Chess"):WaitForChild("SubmitMove"):InvokeServer(from)
         else
             warn("Failed to calculate best move")
@@ -65,12 +65,13 @@ MainRight:AddDropdown("my_dropdown", {
     Values = {"API", "sundown"},
     Default = "API",
     Callback = function(val)
-        print("selected", val)
+        print("Dropdown selected:", val)
     end,
 })
 
 SettingsLeft:AddButton("Unload UI", function()
     Library:Unload()
+    print("UI unloaded")
 end)
 
 SettingsLeft:AddLabel("Toggle UI"):AddKeyPicker("ui_toggle_bind", {
@@ -81,6 +82,7 @@ SettingsLeft:AddLabel("Toggle UI"):AddKeyPicker("ui_toggle_bind", {
     Callback = function()
         local visible = Library.ScreenGui.Enabled
         Library.ScreenGui.Enabled = not visible
+        print("UI toggled:", not visible)
     end,
 })
 
