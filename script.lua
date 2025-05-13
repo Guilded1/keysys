@@ -3,7 +3,7 @@ local Library = getgenv().Library
 local HttpService = game:GetService("HttpService")
 
 local Window = Library:CreateWindow({
-    Title = "Template UI",
+    Title = "Chess Club",
     Center = true,
     AutoShow = true,
     Size = UDim2.fromOffset(550, 600),
